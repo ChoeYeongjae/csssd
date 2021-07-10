@@ -29,7 +29,7 @@ public class MainController {
 	 * */      
 	@RequestMapping("/")	
 	public String main(){
-		return "main";
+		return "index";
 	}
 	
 	/*
