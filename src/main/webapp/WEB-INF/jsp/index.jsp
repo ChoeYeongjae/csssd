@@ -222,7 +222,7 @@
             	$("#exampleModal").modal("hide");
         	});
     		
-		<!--	$.ajax({
+			$.ajax({
 				url : "/launchingCrawling",
 				type : "get",
 				data : "json",
@@ -235,7 +235,7 @@
 					});
 				
 				}
-			}); -->
+			});
 			
 		});
 	
