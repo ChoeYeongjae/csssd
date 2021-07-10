@@ -27,7 +27,7 @@ public class MainController {
 	 * 메인 컨틀로러
 	 *    
 	 * */
-	@RequestMapping(value="/")	
+	@RequestMapping(value="/main")	
 	public String main() throws Exception{
 		return "index";
 	}
