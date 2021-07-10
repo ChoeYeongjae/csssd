@@ -37,8 +37,7 @@ public class MainController {
 	 * 
 	 * */
 	@RequestMapping(value="/launchingCrawling")
-	@ResponseBody
-	public List<HashMap<String,Object>> launchingCrawling() throws Exception{
+	public @ResponseBody List<HashMap<String,Object>> launchingCrawling() throws Exception{
 		
 		// 런칭 싸이트 조회 순위 10위까지 조회
 		String url = "https://coinvote.cc/coins/1&order_by=soon";
@@ -145,8 +144,7 @@ public class MainController {
 	 * 
 	 * */
 	@RequestMapping(value="/websiteVerification")
-	@ResponseBody
-	public String websiteVerification(@RequestParam(value = "urls", required = false) String urls) throws Exception{
+	public @ResponseBody String websiteVerification(@RequestParam(value = "urls", required = false) String urls) throws Exception{
 		
 		// 웹 사이트 메타 태그 검증
 		String url = urls;
@@ -182,8 +180,7 @@ public class MainController {
 	 * 
 	 * */
 	@RequestMapping(value="/bscVerification")
-	@ResponseBody
-	public HashMap<String , String> bscVerification(@RequestParam(value = "contract", required = false) String contract) throws Exception{
+	public @ResponseBody HashMap<String , String> bscVerification(@RequestParam(value = "contract", required = false) String contract) throws Exception{
 
 		// BSC 검증
 		// 1.Contract Source Code Verified (Exact Match) 부터 확인
