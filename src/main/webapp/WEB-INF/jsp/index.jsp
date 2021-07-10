@@ -74,103 +74,6 @@
 		
 	</style>
     
-    <script>
-    
-    $(document).ready(function(){ $('#Progress_Loading').hide();
-     })
-   	.ajaxStart(function(){ $('#Progress_Loading').show(); })
-   	.ajaxStop(function(){ $('#Progress_Loading').hide(); });
-    
-    $(document).ready(function() {
-
-    	$('#Progress_Loading').hide();
-		
-    		$("#close_modal").click(function() {
-            	$("#exampleModal").modal("hide");
-        	});
-    		
-			$.ajax({
-				url : "/launchingCrawling",
-				type : "get",
-				data : "json",
-				success : function(data) {
-					$.each(data, function(key, value) {
-						$('.flex-grow-1').append("<h3 class='mb-0'>" + value.names + "</h3>");
-						$('.flex-grow-1').append("<div class='subheading mb-3'>" + value.contract + "</div>");
-						$('.flex-grow-1').append("<span class='text-primary'>" + value.data + "</span>");
-						$('.flex-grow-1').append("<p>" + value.discpt + "</p>");
-					});
-				
-				}
-			});
-			
-		});
-	
-    	
-    	// 웹사이트 검증 
-	    function websiteVerification() {
-    		
-    		if( $("#input1").val() == '' ) {
-    			alert("웹사이트를 입력해주세요.")
-    			return false;
-    		}
-    		
-			$.ajax({
-				url : "/websiteVerification",
-				type: 'POST',
-                data: {"urls" : $("#input1").val()},
-                dataType: 'text',
-				success : function(data) {
-					
-					if(data == "") {
-						alert("그외 입니다.")
-					} else {
-						alert(data + "입니다.")		
-					}
-				
-				}
-			});
-		};
-		
-		// BSC 검증 
-	    function bscVerification() {
-			
-            if( $("#input3").val() == '' ) {
-    			alert("컨트렉트 주소를 입력해주세요.")
-    			return false;
-    		}
-            
-			$.ajax({
-				url : "/bscVerification",
-				type: 'POST',
-                data: {"contract" : $("#input3").val()},
-                dataType: 'json',
-				success : function(data) {
-					$("#exampleModal").modal("show");
-					
-					if( data.mint != null ) {
-						var m = "O";
-						$('.modal-body').append("<p> MINT : " + m + "</p>");
-					} 
-					
-					if ( data.delegatecall != null ) {
-						var d = "O";
-						$('.modal-body').append("<p> Delegatecall : " + d + "</p>");	
-					} 
-					
-					if ( data.migrator != null ) {
-						var mi = "O";
-						$('.modal-body').append("<p> Migrator : " + mi + "</p>");
-					}
-					
-					$('.modal-body').append("<p> Holders : " + data.holders + "</p>");
-					
-				}
-			});
-		};
-
-	
-    </script>
     <body id="page-top">
     	
         <!-- Navigation-->
@@ -303,5 +206,104 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="resources/js/scripts.js"></script>
+        
+        <script>
+    
+    $(document).ready(function(){ $('#Progress_Loading').hide();
+     })
+   	.ajaxStart(function(){ $('#Progress_Loading').show(); })
+   	.ajaxStop(function(){ $('#Progress_Loading').hide(); });
+    
+    $(document).ready(function() {
+
+    	$('#Progress_Loading').hide();
+		
+    		$("#close_modal").click(function() {
+            	$("#exampleModal").modal("hide");
+        	});
+    		
+			$.ajax({
+				url : "/launchingCrawling",
+				type : "get",
+				data : "json",
+				success : function(data) {
+					$.each(data, function(key, value) {
+						$('.flex-grow-1').append("<h3 class='mb-0'>" + value.names + "</h3>");
+						$('.flex-grow-1').append("<div class='subheading mb-3'>" + value.contract + "</div>");
+						$('.flex-grow-1').append("<span class='text-primary'>" + value.data + "</span>");
+						$('.flex-grow-1').append("<p>" + value.discpt + "</p>");
+					});
+				
+				}
+			});
+			
+		});
+	
+    	
+    	// 웹사이트 검증 
+	    function websiteVerification() {
+    		
+    		if( $("#input1").val() == '' ) {
+    			alert("웹사이트를 입력해주세요.")
+    			return false;
+    		}
+    		
+			$.ajax({
+				url : "/websiteVerification",
+				type: 'POST',
+                data: {"urls" : $("#input1").val()},
+                dataType: 'text',
+				success : function(data) {
+					
+					if(data == "") {
+						alert("그외 입니다.")
+					} else {
+						alert(data + "입니다.")		
+					}
+				
+				}
+			});
+		};
+		
+		// BSC 검증 
+	    function bscVerification() {
+			
+            if( $("#input3").val() == '' ) {
+    			alert("컨트렉트 주소를 입력해주세요.")
+    			return false;
+    		}
+            
+			$.ajax({
+				url : "/bscVerification",
+				type: 'POST',
+                data: {"contract" : $("#input3").val()},
+                dataType: 'json',
+				success : function(data) {
+					$("#exampleModal").modal("show");
+					
+					if( data.mint != null ) {
+						var m = "O";
+						$('.modal-body').append("<p> MINT : " + m + "</p>");
+					} 
+					
+					if ( data.delegatecall != null ) {
+						var d = "O";
+						$('.modal-body').append("<p> Delegatecall : " + d + "</p>");	
+					} 
+					
+					if ( data.migrator != null ) {
+						var mi = "O";
+						$('.modal-body').append("<p> Migrator : " + mi + "</p>");
+					}
+					
+					$('.modal-body').append("<p> Holders : " + data.holders + "</p>");
+					
+				}
+			});
+		};
+
+	
+    </script>
+        
     </body>
 </html>
