@@ -27,7 +27,7 @@ public class MainController {
 	 * 메인 컨틀로러
 	 *    
 	 * */
-	@RequestMapping("/main")	
+	@RequestMapping("/")	
 	public String main() throws Exception{
 		return "main";
 	}
