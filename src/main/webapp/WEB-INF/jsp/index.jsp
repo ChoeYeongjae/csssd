@@ -76,12 +76,15 @@
     
     <script>
     
-    $(document).ready(function(){ $('#Progress_Loading').hide(); })
+    $(document).ready(function(){ $('#Progress_Loading').hide();
+     })
    	.ajaxStart(function(){ $('#Progress_Loading').show(); })
    	.ajaxStop(function(){ $('#Progress_Loading').hide(); });
     
     $(document).ready(function() {
-    		
+
+    	$('#Progress_Loading').hide();
+		
     		$("#close_modal").click(function() {
             	$("#exampleModal").modal("hide");
         	});
@@ -102,6 +105,7 @@
 			});
 			
 		});
+	
     	
     	// 웹사이트 검증 
 	    function websiteVerification() {
